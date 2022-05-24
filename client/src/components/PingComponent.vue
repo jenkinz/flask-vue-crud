@@ -31,7 +31,7 @@ export default defineComponent({
 
 <template>
   <div>
-    <router-link to="/" class="text-pink-900">Home</router-link>
+    <router-link to="/" class="text-indigo-600">Books</router-link>
     <br />
     <button>{{ msg }}</button>
   </div>

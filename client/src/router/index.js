@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HelloWorldVue from '../components/HelloWorld.vue';
+import BooksIndex from '../components/BooksIndex.vue';
 import PingComponent from '../components/PingComponent.vue';
 
 const routes = [
-  { path: '/', component: HelloWorldVue },
+  { path: '/', component: BooksIndex },
   { path: '/ping', component: PingComponent },
 ];
 
