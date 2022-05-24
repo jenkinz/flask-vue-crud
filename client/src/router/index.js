@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import BooksIndex from '../components/BooksIndex.vue';
+import BooksList from '../components/BooksList.vue';
 import PingComponent from '../components/PingComponent.vue';
 
 const routes = [
-  { path: '/', component: BooksIndex },
+  { path: '/', component: BooksList },
   { path: '/ping', component: PingComponent },
 ];
 

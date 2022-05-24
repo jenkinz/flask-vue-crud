@@ -1,14 +1,24 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-// import HelloWorld from './components/HelloWorld.vue';
+<script>
+import { defineComponent } from 'vue';
+import HeaderNav from './components/HeaderNav.vue';
+
+export default defineComponent({
+  components: {
+    HeaderNav,
+  },
+});
 </script>
 
 <template>
-  <div>
-    <h1>Books App</h1>
-    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-    <!-- <HelloWorld msg="Hello Vue 3 + Vite" /> -->
-    <router-view></router-view>
-  </div>
+  <HeaderNav></HeaderNav>
+  <main>
+    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+      <!-- Replace with your content -->
+      <div class="px-4 py-6 sm:px-0">
+        <!-- <div class="h-96 rounded-lg border-4 border-dashed border-gray-200" /> -->
+        <router-view></router-view>
+      </div>
+      <!-- /End replace -->
+    </div>
+  </main>
 </template>
