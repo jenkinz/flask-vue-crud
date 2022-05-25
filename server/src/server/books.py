@@ -1,12 +1,13 @@
 from flask import Blueprint
 from flask import jsonify
+from flask import request
 from werkzeug.exceptions import abort
 
 # from flask import flash
 # from flask import g
 # from flask import redirect
 # from flask import render_template
-# from flask import request
+
 # from flask import url_for
 
 # from server.auth import login_required
@@ -25,9 +26,22 @@ BOOKS = [
 ]
 
 
-@bp.route("/books", methods=["GET"])
+@bp.route("/books", methods=["GET", "POST"])
 def all_books():
-    return jsonify({"status": "success", "books": BOOKS})
+    response = {"status": "success"}
+    if request.method == "POST":
+        post_data = request.get_json()
+        BOOKS.append(
+            {
+                "title": post_data.get("title"),
+                "author": post_data.get("author"),
+                "read": post_data.get("read"),
+            }
+        )
+        response["message"] = "Book added!"
+    else:
+        response["books"] = BOOKS
+    return jsonify(response)
 
 
 @bp.route("/")

@@ -30,13 +30,23 @@ def test_index(client: FlaskClient, auth: AuthActions) -> None:
 
 
 def test_books(client: FlaskClient) -> None:
-    """Test the books view."""
+    """Test the books API."""
     response = client.get("/books")
     books = response.json.get("books")
     assert len(books) == 3
     assert books[0].get("author") == "Jack Kerouac"
     assert books[1].get("read") is False
     assert books[2].get("title") == "Green Eggs and Ham"
+
+    response = client.post(
+        "/books",
+        json={
+            "title": "A New Book",
+            "Author": "AuthorFirst AuthorLast",
+            "read": True,
+        },
+    )
+    assert "Book added!" in response.json.get("message")
 
 
 # @pytest.mark.parametrize("path", ("/create", "/1/update", "/1/delete"))
