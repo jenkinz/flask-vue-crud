@@ -1,4 +1,6 @@
 """This module tests the application factory in server/__init__.py."""
+import pytest
+
 from server import create_app
 
 
@@ -8,6 +10,7 @@ def test_config() -> None:
     assert create_app({"TESTING": True}).testing
 
 
+@pytest.mark.skip(reason="currently disabled")
 def test_hello(client) -> None:
     """Test the hello endpoint.
 
