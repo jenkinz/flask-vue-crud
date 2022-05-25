@@ -2,7 +2,7 @@ __version__ = "0.1.0"
 
 import os
 
-from flask import Flask, jsonify
+from flask import Flask
 from flask_cors import CORS
 from typing import Optional, Mapping, Any
 
@@ -36,25 +36,25 @@ def create_app(test_config: Optional[Mapping[str, Any]] = None) -> Flask:
         pass
 
     # a simple page that says hello
-    @app.route("/hello")
-    def hello() -> str:
-        return "Hello, World!"
+    # @app.route("/hello")
+    # def hello() -> str:
+    #     return "Hello, World!"
 
-    @app.route("/ping", methods=["GET"])
-    def ping_pong():
-        return jsonify("pong!")
+    # @app.route("/ping", methods=["GET"])
+    # def ping_pong():
+    #     return jsonify("pong!")
 
     from . import db
 
     db.init_app(app)
 
-    from . import auth
+    # from . import auth
 
-    app.register_blueprint(auth.bp)
+    # app.register_blueprint(auth.bp)
 
-    from . import blog
+    from . import books
 
-    app.register_blueprint(blog.bp)
+    app.register_blueprint(books.bp)
     app.add_url_rule("/", endpoint="index")
 
     return app

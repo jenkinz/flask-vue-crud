@@ -11,6 +11,7 @@ from .conftest import AuthActions
 from server.db import get_db
 
 
+@pytest.mark.skip(reason="currently disabled")
 def test_register(client: FlaskClient, app: Flask) -> None:
     """Test the `register` view.
 
@@ -39,6 +40,7 @@ different arguments. We use it here to test different invalid input and error
 messages without writing the same code three times."""
 
 
+@pytest.mark.skip(reason="currently disabled")
 @pytest.mark.parametrize(
     ("username", "password", "message"),
     (
@@ -60,6 +62,7 @@ def test_register_validate_input(
     assert message in response.data
 
 
+@pytest.mark.skip(reason="currently disabled")
 def test_login(client: FlaskClient, auth: AuthActions) -> None:
     """Test login and that `user_id` gets set in session after logging in."""
     assert client.get("/auth/login").status_code == 200
@@ -75,6 +78,7 @@ def test_login(client: FlaskClient, auth: AuthActions) -> None:
         assert g.user["username"] == "test"
 
 
+@pytest.mark.skip(reason="currently disabled")
 @pytest.mark.parametrize(
     ("username", "password", "message"),
     (
@@ -90,6 +94,7 @@ def test_login_validate_input(
     assert message in response.data
 
 
+@pytest.mark.skip(reason="currently disabled")
 def test_logout(client: Flask, auth: AuthActions) -> None:
     """Test logging out."""
     auth.login()
