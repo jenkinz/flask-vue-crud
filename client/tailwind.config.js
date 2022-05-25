@@ -22,5 +22,5 @@ module.exports = {
       backgroundColor: ['active'], // enable the active focus state variant
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };

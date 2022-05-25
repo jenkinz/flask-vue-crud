@@ -3,7 +3,7 @@
   <div class="overflow-hidden bg-white shadow sm:rounded-lg">
     <div class="m-auto flex px-4 py-5 sm:px-6">
       <h3 class="mr-auto text-lg font-medium leading-6 text-gray-900">Books</h3>
-      <a class="btn btn-primary ml-auto mt-0" href="#">Add Book</a>
+      <button @click="showAddBookModal = true" class="btn btn-primary ml-auto mt-0" href="#">Add Book</button>
     </div>
     <div class="border-t border-gray-200">
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-6">
@@ -61,6 +61,7 @@
       </div>
     </div>
   </div>
+  <ModalAddBook :show="showAddBookModal" @close-modal="showAddBookModal = false" @keydown.esc="showAddBookModal = false" @book-added="getBooks"></ModalAddBook>
 </template>
 
 <script setup>
@@ -70,10 +71,15 @@ import { PaperClipIcon } from '@heroicons/vue/solid';
 <script>
 import { defineComponent } from 'vue';
 import axios from 'axios';
+import ModalAddBook from './ModalAddBook.vue';
 
 export default defineComponent({
+  components: {
+    ModalAddBook,
+  },
   data() {
     return {
+      showAddBookModal: false,
       books: [],
     };
   },
