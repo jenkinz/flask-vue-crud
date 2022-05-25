@@ -23,7 +23,12 @@
                   class="h-5 w-5 flex-shrink-0 text-gray-400"
                   aria-hidden="true"
                 />
-                <span class="ml-2 w-0 flex-1 truncate"> {{ book.title }} </span>
+                <span class="ml-2 w-0 flex-1 truncate">
+                  {{ book.title }}<br />
+                  <span class="text-xs text-gray-400"
+                    >by {{ book.author }}</span
+                  >
+                </span>
                 <span
                   v-if="book.read"
                   class="ml-2 w-0 flex-1 truncate text-xs uppercase tracking-wider text-gray-300"
