@@ -88,7 +88,7 @@ export default defineComponent({
   },
   methods: {
     getBooks() {
-      const path = 'http://localhost:5000/books';
+      const path = 'http://' + window.location.hostname + ':5000/books';
       axios
         .get(path)
         .then((res) => {

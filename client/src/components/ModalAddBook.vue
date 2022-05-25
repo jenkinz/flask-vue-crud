@@ -166,7 +166,7 @@ export default defineComponent({
       this.$refs.modalForm.submit();
     },
     addBook(payload) {
-      const path = 'http://localhost:5000/books';
+      const path = 'http://' + window.location.hostname + ':5000/books';
       axios
         .post(path, payload)
         .then(() => {
